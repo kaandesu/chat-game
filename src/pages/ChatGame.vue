@@ -21,11 +21,12 @@
 </template>
 
 <script setup>
-    import { onMounted, ref } from "vue";
-    import * as Chat from '../components/chat-components.js'
-    import * as Scenarios from '../components/scenarios/chat-scenarios.js'
-    console.log(Scenarios.ChatOne.story);
-    const activeScenario = ref(Scenarios.ChatOne);
+  import { onMounted, ref } from "vue";
+  import * as Chat from '../components/chat-components.js'
+  import * as Scenarios from '../components/scenarios/chat-scenarios.js'
+  console.log(Scenarios.ChatOne.story);
+  const activeScenario = ref(Scenarios.ChatOne);
+  
 
 
 </script>
