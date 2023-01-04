@@ -15,7 +15,7 @@
     round    
     class="bg-white text-grey-7 scrollbtn"
     :class="showScrollBtn ? 'show' : 'hide'"
-    @click="scrollToBottom"
+    @click="scrollToBottom()"
     />
   </section>
 </template>
@@ -24,11 +24,11 @@
 import { onMounted, ref } from 'vue';
   const scroll = ref(null);
   onMounted(() => {    
-    scrollToBottom();
+    scrollToBottom(0);
   });
-  const scrollToBottom = () => {
+  const scrollToBottom = (ms=300) => {
     let sHeight = scroll.value.getScroll().verticalSize;
-    scroll.value.setScrollPosition('vertical',sHeight,300);
+    scroll.value.setScrollPosition('vertical',sHeight,ms);
   }
   const showScrollBtn = ref(false);
   const toggleScrollBtn = (per) => {
