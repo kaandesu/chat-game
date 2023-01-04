@@ -24,7 +24,7 @@
   import { useRouter } from "vue-router";
 const { push } = useRouter();
     const initGame = (chat) => {
-        push({ name: 'chat', params: { game: 'chat' } })
+        push({ name: 'chat', params: { game: chat } })
     }    
     defineProps({
         avatar: {

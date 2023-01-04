@@ -1,5 +1,5 @@
 <template>
-  <div class="screen">
+  <div class="screen" v-if="activeScenario !== null">
     <Chat.Header 
      :title="activeScenario.title"
      :avatar="activeScenario.avatar"
@@ -24,16 +24,15 @@
   import { onMounted, ref } from "vue";
   import * as Chat from '../components/Chat/chat-components.js'
   import * as Scenarios from '../components/scenarios/chat-scenarios.js'  
-  const activeScenario = ref(Scenarios.ChatOne);
+  const activeScenario = ref(null);
   const props = defineProps({
     game: {
       type: String,
-      required: true,
-      default:'none'
-    },
+      required: true,      
+    },  
   });
   onMounted(() => {
-    console.log(props.game);
+    activeScenario.value = Scenarios[props.game];
   });
 
 </script>
