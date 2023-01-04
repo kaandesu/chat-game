@@ -7,12 +7,14 @@
 
           <q-toolbar-title class="title">{{title}}</q-toolbar-title>
             <q-separator vertical inset class="q-mr-sm" />
-          <q-btn unelevated flat round dense icon="expand_more" />
+          <q-btn @click="goHome()" unelevated flat round dense icon="expand_more" />
         </q-toolbar>
     </q-header>
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+const { push } = useRouter();
 defineProps({
   title: {
     type: String,
@@ -25,6 +27,9 @@ defineProps({
   }
 })
 
+const goHome = () => {
+  push({ name: 'main' })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -38,10 +43,10 @@ defineProps({
 }
 .toolbar{
     background-color: #EFF2F5;
-    color: black;    
+    color: black;      
     .title{
-        @include no-select;
-        font-size: 1rem;
+        @include no-select;        
+        font-size:1rem;
         cursor: pointer;
         
     }    

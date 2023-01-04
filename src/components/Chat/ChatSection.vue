@@ -1,7 +1,7 @@
 <template>
   <section>
     <q-scroll-area 
-    :visible="true" 
+    :visible="false" 
     ref="scroll"
     style="width:100%;height:100%"    
     :thumb-style="{ opacity: 0.5,'pointer-events':'none','background-color':'rgba(0,0,0,0)' }"

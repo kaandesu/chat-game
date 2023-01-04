@@ -9,7 +9,7 @@
                 :class="[{show:showAttachments,hide:!showAttachments}, btn.color, 'btn text-white']" 
                 
                 glossy 
-                size="1rem" 
+                size="1.1rem" 
                 :icon="`${btn.icon}`" 
                 round flat 
                 :style="`--order:${btn.order}`" />            
@@ -35,7 +35,7 @@ import { ref } from 'vue';
         },
         {
             icon: 'upload_file',
-            color: 'bg-teal-7', 
+            color: 'bg-teal-4', 
             order:2,
             func: () => {
                 alert('heyy!');
@@ -43,7 +43,7 @@ import { ref } from 'vue';
         },
         {
             icon: 'image',
-            color: 'bg-purple',
+            color: 'bg-pink-5',
             order:1,
             func: () => {
                 console.log('person');
@@ -97,42 +97,46 @@ import { ref } from 'vue';
     .btn.show{    
         opacity:0;   
         transform-origin: bottom;      
-        animation: slideIn 0.6s ease-in-out forwards;
-        animation-delay:calc(var(--order) * 0.05s);
+        animation: slideIn 0.45s ease-out forwards;
+        animation-delay:calc(calc(var(--order) - 1) * 0.05s);
     }
  
     .btn.hide{              
-        transform-origin: bottom;
-        animation: slideOut 0.6s ease-in-out forwards;        
-        animation-delay:calc(var(--order) * 0.05s);
+        transform-origin: 50% 100%;
+        animation: slideOut 0.5s ease-in-out forwards;        
+        animation-delay:calc(calc(var(--order) - 1) * 0.05s);
     }
    
 }
 @keyframes slideIn{
     0%{
         opacity: 0;            
-        transform: scale(0) translateY(100%);
+        transform: scale(0) translateY(150%);
+    }    
+    20%{
+        opacity: 0.1;                    
     }
-    80%{
-        opacity: 0.2;            
-        transform: scale(1) translateY(-10px);
-    }                
+    70%{                        
+        transform: scale(1.10);
+    }     
     100%{
         opacity: 1;
         transform: scale(1) translateY(0px);
     }
 }
     @keyframes slideOut{
-    100%{
-        opacity: 0;            
-        transform: scale(0) translateY(100%);
-    }
-    30%{                 
-        transform: scale(0.95) translateY(-10px);
-    }        
     0%{
         opacity: 1;
         transform: scale(1) translateY(0px);
     }
+    50%{
+        opacity: 0.7;            
+        transform: scale(0.95);
+    }
+    100%{
+        opacity: 0;            
+        transform: scale(0) translateY(200%);
+    }            
+    
 }
 </style>
