@@ -34,7 +34,6 @@
   onMounted(() => {
     activeScenario.value = Scenarios[props.game];
   });
-  
 
 </script>
 
