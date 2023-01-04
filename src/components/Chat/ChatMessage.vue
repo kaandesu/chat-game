@@ -7,6 +7,7 @@
         :stamp="timestamp"
         :bg-color="bgColor"
         class="chat-message"     
+        :text-color="$q.dark.isActive ? 'white' : 'black'"
       />      
   </section>
 </template>
@@ -16,9 +17,9 @@ import { computed, defineProps, ref } from 'vue'
 import { useQuasar } from 'quasar'
 const $q = useQuasar();
 const bgColor = computed(() => {
-  if(props.isMine && $q.dark.isActive) return 'secondary'
-  if(!props.isMine && $q.dark.isActive) return 'white'
-  if(props.isMine && !$q.dark.isActive) return 'primary'
+  if(props.isMine && $q.dark.isActive) return 'primary'
+  if(!props.isMine && $q.dark.isActive) return 'grey-9'
+  if(props.isMine && !$q.dark.isActive) return 'secondary'
   if(!props.isMine && !$q.dark.isActive) return 'white'
   return 'primary'
 });
@@ -55,10 +56,11 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-.body--light{
+@use 'src/css/app.scss' as *;
+.body--dark{
     .section{    
         .chat-message{
-            
+            color: white;
         }
     }
 }
@@ -69,7 +71,7 @@ section{
     flex-flow: row nowrap;    
     align-items: center;
     .chat-message{        
-        max-width: 80%;          
+        max-width: 80%;                  
     }
 }
 </style>

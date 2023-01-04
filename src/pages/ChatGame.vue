@@ -46,7 +46,10 @@
 }
 .body--dark{
     .screen{    
-        background-color:$dark-page;  
+        background-color:$dark;  
+        &::before{
+          filter:invert(2);
+        }
     }
 }
 .screen{
@@ -60,8 +63,7 @@
         content: '';
         position: absolute;
         background-image:url('https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg');
-        background-size: contain;
-        filter:invert(2);
+        background-size: contain;        
         opacity: 0.13;
         width: 100%;
         height: 100%;
