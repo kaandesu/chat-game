@@ -1,13 +1,14 @@
 <template>
-  <q-header>
-        <q-toolbar class="toolbar">          
+  <q-header bordered class="bg-grey-1">
+        <q-toolbar class="toolbar">   
+          <q-icon class="backBtn text-blue-13" size="2.4rem" @click="goHome()" name="keyboard_arrow_left" />       
           <q-avatar>
             <img draggable="false" alt="Contact" :src="avatar">
           </q-avatar>
 
           <q-toolbar-title class="title">{{title}}</q-toolbar-title>
             <q-separator vertical inset class="q-mr-sm" />
-          <q-btn @click="goHome()" unelevated flat round dense icon="expand_more" />
+          <q-btn unelevated flat round dense icon="expand_more" />
         </q-toolbar>
     </q-header>
 </template>
@@ -42,14 +43,18 @@ const goHome = () => {
   user-select: none;          
 }
 .toolbar{
-    background-color: #EFF2F5;
+    background-color: #fff;
     color: black;      
     .title{
-        @include no-select;        
-        font-size:1rem;
-        cursor: pointer;
-        
+      @include no-select;        
+      font-size:1rem;
+      cursor: pointer;        
     }    
+    .backBtn{
+      cursor: pointer;
+      margin-right: 0.5rem;
+      margin-left: -0.5rem;
+    }
 }
 .q-avatar{
     cursor: pointer;

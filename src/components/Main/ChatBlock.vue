@@ -1,35 +1,57 @@
 <template>             
-    <q-item clickable v-ripple>
+    <q-item @click="initGame(game)" clickable v-ripple class="item">
     <q-item-section avatar>
-        <q-avatar>
-        <img src="https://cdn.quasar.dev/img/avatar2.jpg">
+        <q-avatar size="3.5rem">
+            <img :src="avatar">
         </q-avatar>
     </q-item-section>
 
     <q-item-section>
-        <q-item-label lines="1">Brunch this weekend?</q-item-label>
-        <q-item-label caption lines="2">
-        <span class="text-weight-bold">Janet</span>
-        -- I'll be in your neighborhood doing errands this
-        weekend. Do you want to grab brunch?
+        <q-item-label lines="1">{{title}}</q-item-label>
+        <q-item-label caption lines="2">        
+        {{firstLine}}
         </q-item-label>
     </q-item-section>
 
     <q-item-section side top>
-        1 min ago
+        Today
     </q-item-section>
     </q-item>    
-    <q-separator inset />
+    <q-separator inset="item" />
 </template>
 
 <script setup>
-
+  import { useRouter } from "vue-router";
+const { push } = useRouter();
+    const initGame = (chat) => {
+        push({ name: 'chat', params: { game: 'chat' } })
+    }    
+    defineProps({
+        avatar: {
+            type: String,
+            required: true,
+            default:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+        },
+        title: {
+            type: String,
+            required: true,
+            default:'Unknown number'
+        },
+        firstLine: {
+            type: String,
+            required: true,
+            default:'hello'
+        },
+        game: {
+            type: String,
+            required: true,        
+        }
+    })
 </script>
 
 <style lang="scss" scoped>
-section{
-  width:100%;
-  height:5rem;
-  background-color:#c2c2c2 ;
+.item{    
+  background-color:#fff;
+  height: 4.6rem;
 }
 </style>

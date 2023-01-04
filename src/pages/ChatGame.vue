@@ -3,7 +3,7 @@
     <Chat.Header 
      :title="activeScenario.title"
      :avatar="activeScenario.avatar"
-    />
+    />    
     <Chat.Section>
       <template #message>
         <Chat.Message
@@ -23,11 +23,18 @@
 <script setup>
   import { onMounted, ref } from "vue";
   import * as Chat from '../components/Chat/chat-components.js'
-  import * as Scenarios from '../components/scenarios/chat-scenarios.js'
-  console.log(Scenarios.ChatOne.story);
+  import * as Scenarios from '../components/scenarios/chat-scenarios.js'  
   const activeScenario = ref(Scenarios.ChatOne);
-  
-
+  const props = defineProps({
+    game: {
+      type: String,
+      required: true,
+      default:'none'
+    },
+  });
+  onMounted(() => {
+    console.log(props.game);
+  });
 
 </script>
 

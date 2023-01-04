@@ -1,5 +1,5 @@
 <template>
-  <q-header>
+  <q-header bordered class="bg-grey-1">
     <q-toolbar class="toolbar">                    
       <q-btn style="font-size:1rem" class="text-blue" no-caps label="Edit" dense flat unelevated />      
       <label class="title">Chats</label>
@@ -24,7 +24,7 @@
   user-select: none;          
 }
 .toolbar{
-    background-color: #EFF2F5;
+    background-color: #fff;
     color: black;   
     display:flex;
     justify-content: space-between;
