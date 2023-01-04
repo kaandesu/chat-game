@@ -1,6 +1,7 @@
 //! add delay between each message and when on delay show a q-spinner 3 dots
 //! think about the time logic, and how to make it work
 const chat ={title:"QuArc Chatbot",
+            game:'ChatOne',
             avatar:'https://github.com/kaandesu/testrepo/blob/main/QuArc1.png?raw=true',
             story: [
                 { text: "Hello, I am QuArc. How may I assist you?", isMine: false, timestamp: "12:00 PM" },
