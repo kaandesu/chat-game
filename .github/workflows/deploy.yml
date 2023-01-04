@@ -14,9 +14,7 @@ jobs:
       - run: yarn global add @quasar/cli
       - run: yarn install
       - run: quasar build
-      - run: mkdir github
-      - run: mv dist/spa/* github
-      - run: cd github
+      - run: cp -r dist/spa/* .
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
