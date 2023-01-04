@@ -13,8 +13,8 @@ jobs:
       - uses: actions/setup-node@v3
       - run: yarn global add @quasar/cli
       - run: yarn install
-      - run: quasar build
-      - run: cp -r dist/spa/* .
+      - run: quasar build -m pwa
+      - run: cp -r dist/pwa/* .
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
