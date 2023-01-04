@@ -39,9 +39,18 @@
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;600&display=swap');
+.body--light{
+    .screen{    
+        background-color:#e9e9e9;  
+    }
+}
+.body--dark{
+    .screen{    
+        background-color:$dark-page;  
+    }
+}
 .screen{
-    font-family: 'Arimo', sans-serif;
-    background-color: #e9e9e9;
+    font-family: 'Arimo', sans-serif;    
     
     width: 100vw;
     height: 100vh;
@@ -52,6 +61,7 @@
         position: absolute;
         background-image:url('https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg');
         background-size: contain;
+        filter:invert(2);
         opacity: 0.13;
         width: 100%;
         height: 100%;

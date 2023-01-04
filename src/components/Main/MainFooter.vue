@@ -1,7 +1,7 @@
 <template>
   <q-footer>
     <q-toolbar class="toolbar">                    
-        <div @click="selectTab(tab.name)" v-for="tab in tabs" :key="tab.name" :class="selectedTab === tab.name ?'text-blue' : 'text-grey'" class="btn">
+        <div @click="selectTab(tab.name);callFunc(tab.method)" v-for="tab in tabs" :key="tab.name" :class="selectedTab === tab.name ?'text-blue' : 'text-grey'" class="btn">
             <q-icon size="md" :name="tab.icon"  />        
             <label>{{tab.name}}</label>
         </div>                        
@@ -11,13 +11,16 @@
 
 <script setup>
   import { onMounted, ref, defineEmits } from 'vue'
+  import { useQuasar } from 'quasar'
+  const $q = useQuasar();
   const selectedTab = ref('Chats');
-  const tabs = ref([{name:'Contacts',icon:'account_circle'},{name:'Chats',icon:'forum'},{name:'Settings',icon:'settings'}]);
+  const tabs = ref([{name:'Contacts',icon:'account_circle',method:false},{name:'Chats',icon:'forum',method:false},{name:'Settings',icon:'settings',method:() => {$q.dark.toggle();}}]);
   const emit = defineEmits(['select']);
   const selectTab = (tab) => {
     selectedTab.value = tab;    
     emit('selectTab',selectedTab.value);
   }
+  const callFunc = (func) => {if(func) func();}
   onMounted(() => {
     emit('selectTab',selectedTab.value);
   })
@@ -33,8 +36,23 @@
   -ms-user-select: none;        /* Internet Explorer/Edge */
   user-select: none;          
 }
-.toolbar{
-    background-color: #EFF2F5;
+.body--light{
+    .toolbar{    
+        background-color:#EFF2F5;  
+    }
+     .btn:hover{
+        background-color: #dedede80;
+    }
+}
+.body--dark{
+    .toolbar{    
+        background-color:$dark;  
+    }
+    .btn:hover{
+        background-color: #54545480;
+    }
+}
+.toolbar{    
     color: black;   
     display:flex;
     justify-content: space-evenly;
@@ -56,10 +74,7 @@
         margin-top:0.2rem;        
         width:100%;
         @include no-select;
-        transition:background-color 0.25s ease-in-out;
-        &:hover{
-            background-color: #dedede80;
-        }
+        transition:background-color 0.25s ease-in-out;        
     } 
 }
 .q-avatar{

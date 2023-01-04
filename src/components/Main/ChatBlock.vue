@@ -50,8 +50,17 @@ const { push } = useRouter();
 </script>
 
 <style lang="scss" scoped>
-.item{    
-  background-color:#fff;
-  height: 4.6rem;
+.item{
+    height: 4.6rem;
+}
+.body--light{
+    .item{    
+        background-color:#fff;  
+    }
+}
+.body--dark{
+    .item{    
+        background-color:$dark;  
+    }
 }
 </style>

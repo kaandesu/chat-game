@@ -5,16 +5,25 @@
         :text="[message]"
         :sent="isMine"
         :stamp="timestamp"
-        :bg-color="isMine? 'green-11' : 'white'"
+        :bg-color="bgColor"
         class="chat-message"     
       />      
   </section>
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue'
+import { computed, defineProps, ref } from 'vue'
+import { useQuasar } from 'quasar'
+const $q = useQuasar();
+const bgColor = computed(() => {
+  if(props.isMine && $q.dark.isActive) return 'secondary'
+  if(!props.isMine && $q.dark.isActive) return 'white'
+  if(props.isMine && !$q.dark.isActive) return 'primary'
+  if(!props.isMine && !$q.dark.isActive) return 'white'
+  return 'primary'
+});
 
-defineProps({
+const props = defineProps({
   message: {
     type: String,
     required: true
@@ -26,7 +35,8 @@ defineProps({
   },
   isMine: {
     type: Boolean,
-    required: true,    
+    required: true,   
+    default: false 
   },
   isRead: {
     type: Boolean,
@@ -45,6 +55,13 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+.body--light{
+    .section{    
+        .chat-message{
+            
+        }
+    }
+}
 section{
     width:100%;
     height:5rem;    

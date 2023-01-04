@@ -36,11 +36,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;600&display=swap');
 .screen{
-    font-family: 'Arimo', sans-serif;
-    background-color: #fff;    
+    font-family: 'Arimo', sans-serif;     
     width: 100vw;
     height: 100vh;
 
 }
-
+.body--light{
+    .screen{    
+        background-color:#fff;  
+    }
+}
+.body--dark{
+    .screen{    
+        background-color:$dark;  
+    }
+}
 </style>

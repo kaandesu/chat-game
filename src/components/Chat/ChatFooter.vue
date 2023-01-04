@@ -53,8 +53,24 @@ import { ref } from 'vue';
 </script>
 
 <style scoped lang="scss">
-.q-footer{
-    background-color: #EFF2F5;
+.body--light{
+    .q-footer{
+        background-color: #EFF2F5;
+        .input{
+            background: #fff;
+        }
+    }
+}
+.body--dark{
+    .q-footer{
+        background-color: $dark;
+        color: white;
+        .input{
+            background: #2b2b2b;
+        }
+    }
+}
+.q-footer{    
     color:black;        
     display: flex;
     padding: 0rem 0.25rem;
@@ -70,8 +86,7 @@ import { ref } from 'vue';
         height: 55%;
         width: 100%;
         margin-left: 1rem ;
-        border-radius: 5px;
-        background:#fff;
+        border-radius: 5px;        
         display: flex;
         justify-content: flex-start;        
         align-items: center;
