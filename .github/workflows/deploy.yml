@@ -14,8 +14,9 @@ jobs:
       - run: yarn global add @quasar/cli
       - run: yarn install
       - run: quasar build -m pwa
-      - run: rm -rf `find . -maxdepth 1 ! -name "dist" ! -name "." ! -name ".git"`
+      - run: rm -rf `find . -maxdepth 1 ! -name "dist" ! -name "README.md" ! -name "." ! -name ".git"`
       - run: cp -r dist/pwa/* .
+      - run: rm -rf dist
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
