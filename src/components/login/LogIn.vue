@@ -1,17 +1,18 @@
 <template>  
     <seciton class="loginBox" :class="props.activeClass" style="--size:450px">        
         <label class="title">Login Page</label>        
-        <q-input autofocus color="purple" label="email" v-model="email"/>
-        <q-input color="purple" label="password" type="password" v-model="password"/>        
+        <q-input class="input" color="purple" label="E-mail" v-model="email"/>
+        <q-input class="input" color="purple" label="Password" type="password" v-model="password"/>        
         
-        <q-btn class="q-mt-md" push color="purple" label="Login" @click="login"/>   
+        <q-btn class="q-mt-md" size="1.1rem" push color="purple" label="Login" @click="logIn()"/>   
         <label>Don't have an account? <a href="javascript:;" @click="emit('toggle')">Sign up</a></label>     
     </seciton>  
 </template>
 
 <script setup>
     import { ref } from 'vue'
-
+    import { useRouter } from "vue-router";
+    const { push } = useRouter();    
     const email = ref('')
     const password = ref('')
     const emit = defineEmits(['toggle']);
@@ -20,31 +21,40 @@
             type: String,            
         }
     })
+
+    const logIn = () => {
+        push({ name: 'main'})
+    }
 </script>
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
-.landscape.loginBox::before{    
-    clip-path: ellipse(20% 50% at 0% 50%);    
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size:contain ;
-    animation:bgMoveHor 40s linear infinite alternate;         
-}
-.landscape.loginBox::after{    
-    clip-path: ellipse(20% 50% at 100% 50%);    
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size:contain;
-    animation:bgMoveHor 40s linear infinite alternate;         
-}
-.landscape.loginBox{
-    width:100%;    
-    position: absolute;    
+.landscape{
+    &.loginBox{
+        width:100%;
+        position: absolute;    
+        &::after{    
+            clip-path: ellipse(20% 50% at 100% 50%);    
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size:contain;
+            animation:bgMoveHor 40s linear infinite alternate;  
+        }
+        &::before{    
+            clip-path: ellipse(20% 50% at 0% 50%);    
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size:contain ;
+            animation:bgMoveHor 40s linear infinite alternate;         
+        }
+        .input{
+            width: max(50%,300px);
+        }
+    }    
 }
 .loginBox{        
     position: relative;
@@ -56,7 +66,9 @@
     width: min(var(--size),100%);
     height: 100%;
     background-color: #fff;   
-    
+    .input{
+        width: 80%;
+    }
     .title{
         font-size: 3rem;        
         background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(42,35,170,1) 23%, rgba(57,0,134,1) 50%, rgba(137,5,207,1) 74%, rgba(253,187,45,1) 100%);

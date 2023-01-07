@@ -1,7 +1,7 @@
 <template>
   <div ref="screen" class="screen">    
     <transition class="page" name="page" mode="out-in">
-        <Login.SignIn         
+        <Login.Login         
         @toggle="haveAccount = !haveAccount"
         v-if="haveAccount"
         :activeClass="activeClass"

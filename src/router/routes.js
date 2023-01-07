@@ -6,8 +6,8 @@ const routes = [
     children: [
       { path: 'chat/:game',props:true,name:'chat', component: () => import('pages/ChatGame.vue') },
       { path: 'chat', component: () => import('pages/MainMenu.vue') },
-      { path: '',props:true,name:'main', component: () => import('pages/MainMenu.vue') },
-      { path: 'login',props:true,name:'login', component: () => import('pages/LoginPage.vue') },
+      { path: 'main',props:true,name:'main', component: () => import('pages/MainMenu.vue') },
+      { path: '',props:true,name:'login', component: () => import('pages/LoginPage.vue') },
     ]
   },
 
