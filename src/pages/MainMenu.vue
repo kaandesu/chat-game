@@ -9,7 +9,7 @@
                  :key="index"
                  :title="chat.title"
                  :avatar="chat.avatar"
-                 :firstLine="chat.story[0].text"                
+                 :firstLine="chat.story[0][0].text"                
                  :game="chat.game"
                 />
             </template>

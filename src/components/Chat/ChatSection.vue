@@ -31,13 +31,15 @@ import { onMounted, ref } from 'vue';
     scroll.value.setScrollPosition('vertical',sHeight,ms);
   }
   const showScrollBtn = ref(false);
-  const toggleScrollBtn = (per) => {
-    
+  const toggleScrollBtn = (per) => {    
     if(per > 0.8) showScrollBtn.value = false;
     else showScrollBtn.value = true;    
    
   }
-  
+  defineExpose({
+  scrollToBottom,
+  scroll
+})
 </script>
 
 <style scoped lang="scss">

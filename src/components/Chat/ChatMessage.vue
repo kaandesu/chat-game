@@ -1,14 +1,25 @@
 <template>
 <!-- create both message types in h() and use <component /> -->
   <section :style="{'justify-content':isMine ? 'flex-end' : 'flex-start'}">
-    <q-chat-message                
+    <q-chat-message    
+        v-if="!loading"            
         :text="[message]"
         :sent="isMine"
         :stamp="timestamp"
         :bg-color="bgColor"
         class="chat-message"     
         :text-color="$q.dark.isActive ? 'white' : 'black'"
-      />      
+    />      
+    <q-chat-message                        
+        v-if="loading"
+        :sent="isMine"        
+        :bg-color="bgColor"
+        class="chat-message"     
+        :text-color="$q.dark.isActive ? 'white' : 'black'"
+      >      
+      <q-spinner-dots size="2rem" /> 
+    </q-chat-message>
+      
   </section>
 </template>
 
@@ -44,13 +55,17 @@ const props = defineProps({
     required: true
   },
   isDelivered: {
-    type: Boolean,
-    required: true,    
+    type: Boolean,    
   },
   isSent: {
     type: Boolean,
     required: true,
     default:true,
+  },
+  loading: {
+    type: Boolean,
+    required: true,
+    default: true
   }
 })
 </script>

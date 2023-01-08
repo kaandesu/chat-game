@@ -16,13 +16,18 @@
         </section>
         
         <div class="input" />
-        <q-btn icon="send" class="sendbtn" dense round flat unelevated color="blue-5" />
+        <q-btn @click="emit('next')" icon="send" class="sendbtn" dense round flat unelevated color="blue-5" />
     </q-toolbar>
     </q-footer>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+    import { ref } from 'vue';
+    const emit = defineEmits(['next']);
+
+
+
+
     const showAttachments = ref(false);
     const attachmentList = ref([
         {
