@@ -3,6 +3,7 @@
     <q-scroll-area 
     :visible="false" 
     ref="scroll"
+    @click="emit('next')"
     style="width:100%;height:100%"    
     :thumb-style="{ opacity: 0.5,'pointer-events':'none','background-color':'rgba(0,0,0,0)' }"
     @scroll="(e)=>{toggleScrollBtn(e.verticalPercentage)}"
@@ -11,7 +12,7 @@
     </q-scroll-area>  
     <q-btn 
     icon="expand_more"
-    dense    
+    dense     
     round    
     class="bg-white text-grey-7 scrollbtn"
     :class="showScrollBtn ? 'show' : 'hide'"
@@ -36,9 +37,9 @@ import { onMounted, ref } from 'vue';
     else showScrollBtn.value = true;    
    
   }
+  const emit = defineEmits(['next']);
   defineExpose({
-  scrollToBottom,
-  scroll
+  scrollToBottom,  
 })
 </script>
 

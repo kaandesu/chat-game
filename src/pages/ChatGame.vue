@@ -4,7 +4,7 @@
      :title="activeScenario.title"
      :avatar="activeScenario.avatar"
     />    
-    <Chat.Section ref="section">
+    <Chat.Section @next="nextChat()" ref="section">
       <template #message>
         <Chat.Message
           v-for="(msg,index) in shownScenario"
@@ -61,18 +61,21 @@
     // show the writing icon, if its not my turn    
     timeout.value = setTimeout(() => {   
       if(activeScenario.value.story[currentProgress.value.storyIndex].length-1 == currentProgress.value.msgIndex) return;               
-    currentProgress.value.myTurn = activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].isMine;            
+      currentProgress.value.myTurn = activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].isMine;            
+      section.value.scrollToBottom();
       timeout2.value = setTimeout(() => {        
         currentProgress.value.msgIndex++;
+        activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
         shownScenario.value.push(activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex]);
         currentProgress.value.myTurn = activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].isMine;    
       }, activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex+1].text.length * 50);
     }, 1000);
-    
+    activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
     shownScenario.value.push(activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex]);
   }
   onMounted(() => {    
     activeScenario.value = Scenarios[props.game];
+    activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex].timestamp = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
     shownScenario.value.push(activeScenario.value.story[currentProgress.value.storyIndex][currentProgress.value.msgIndex]);        
   });
 
